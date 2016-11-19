@@ -86,6 +86,23 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    protected void writeFile(String fileName,String poem){
+        Path path = Paths.get("./src/com/company/", fileName);
+        List<String> poemList = new ArrayList<>();
+        poemList.add(poem);
+        Charset charset = Charset.forName("UTF-8");
+        try {
+            if(Files.exists(path)) {
+                Files.write(path, poemList, charset, StandardOpenOption.APPEND);
+
+            }else{
+                Files.write(path, poemList, charset, StandardOpenOption.CREATE);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
